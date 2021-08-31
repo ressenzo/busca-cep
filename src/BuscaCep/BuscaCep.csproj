@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="IoC\" />
+    <Folder Include="Repositorios\Interfaces\" />
+    <Folder Include="Repositorios\Implementacoes\" />
+  </ItemGroup>
+
 
 </Project>
