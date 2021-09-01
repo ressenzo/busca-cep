@@ -1,3 +1,4 @@
+using BuscaCep.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,8 @@ namespace BuscaCep
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            Mapeamentos.Mapear(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

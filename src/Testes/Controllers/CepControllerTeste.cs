@@ -2,6 +2,7 @@
 using BuscaCep.Servicos.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,22 +17,34 @@ namespace Testes.Controllers
             _obterCepServico = new Mock<IObterCepServico>();
         }
 
-        [Theory]
-        [InlineData("1234567A")]
-        [InlineData("123456789")]
-        [InlineData("12345 67")]
-        [InlineData("")]
-        [InlineData(null)]
-        public async Task ValidarCep_CepInvalido_BadRequest(string cep)
+        [Fact]
+        public async Task BadRequest()
         {
             // Arrange
             var cepController = Controller;
+            _obterCepServico.Setup(x => x.ObterCep(It.IsAny<string>()))
+                .Throws(new ArgumentException());
 
             // Act
-            var resultado = await cepController.ObterInformacoesCep(cep);
+            var resultado = await cepController.ObterInformacoesCep(It.IsAny<string>());
 
             // Assert
             Assert.IsType<BadRequestObjectResult>(resultado);
+        }
+
+        [Fact]
+        public async Task InternalServerError()
+        {
+            // Arrange
+            var cepController = Controller;
+            _obterCepServico.Setup(x => x.ObterCep(It.IsAny<string>()))
+                .Throws(new Exception());
+
+            // Act
+            var resultado = await cepController.ObterInformacoesCep(It.IsAny<string>());
+
+            // Assert
+            Assert.IsType<ObjectResult>(resultado);
         }
 
         private CepController Controller

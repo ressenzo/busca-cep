@@ -1,5 +1,7 @@
 ﻿using BuscaCep.Servicos.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -10,27 +12,30 @@ namespace BuscaCep.Controllers
     [Route("[controller]")]
     public class CepController : ControllerBase
     {
-        private readonly IObterCepServico _obterCep;
+        private readonly IObterCepServico _obterCepServico;
 
         public CepController(IObterCepServico obterCep)
         {
-            _obterCep = obterCep;
+            _obterCepServico = obterCep;
         }
 
         [HttpGet("{cep}")]
         public async Task<IActionResult> ObterInformacoesCep(string cep)
         {
-            if (
-                string.IsNullOrWhiteSpace(cep) ||
-                cep.Any(x => char.IsLetter(x) ||
-                char.IsWhiteSpace(x)) ||
-                cep.Length >= 9
-            )
+            try
             {
-                return BadRequest("CEP inválido. Deve conter apenas números, ter, no máximo, 8 caracteres e não pode ter espaço.");
-            }
+                await _obterCepServico.ObterCep(cep);
 
-            return Ok();
+                return Ok();
+            }
+            catch (ArgumentException excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+            catch (Exception excecao)
+            {
+                return StatusCode((int)StatusCodes.Status500InternalServerError, excecao.Message);
+            }            
         }
     }
 }
