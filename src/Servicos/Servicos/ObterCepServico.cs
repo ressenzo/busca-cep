@@ -1,10 +1,10 @@
-﻿using BuscaCep.Entidades;
-using BuscaCep.Servicos.Interfaces;
+﻿using Dominio.Entidades;
+using Servicos.Contratos;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BuscaCep.Servicos.Implementacoes
+namespace Servicos.Servicos
 {
     public class ObterCepServico : IObterCepServico
     {

@@ -1,9 +1,7 @@
-﻿using BuscaCep.Servicos.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Servicos.Contratos;
 using System;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace BuscaCep.Controllers

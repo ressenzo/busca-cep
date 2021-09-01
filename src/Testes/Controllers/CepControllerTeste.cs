@@ -1,7 +1,7 @@
 ﻿using BuscaCep.Controllers;
-using BuscaCep.Servicos.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Servicos.Contratos;
 using System;
 using System.Threading.Tasks;
 using Xunit;

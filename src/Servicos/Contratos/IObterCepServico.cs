@@ -1,7 +1,7 @@
-﻿using BuscaCep.Entidades;
+﻿using Dominio.Entidades;
 using System.Threading.Tasks;
 
-namespace BuscaCep.Servicos.Interfaces
+namespace Servicos.Contratos
 {
     public interface IObterCepServico
     {

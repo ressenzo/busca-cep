@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuscaCep\BuscaCep.csproj" />
+    <ProjectReference Include="..\Servicos\Servicos.csproj" />
   </ItemGroup>
 
 </Project>

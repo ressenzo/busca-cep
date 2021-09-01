@@ -1,4 +1,4 @@
-﻿namespace BuscaCep.Entidades
+﻿namespace Dominio.Entidades
 {
     public class Cep
     {

@@ -1,4 +1,4 @@
-﻿using BuscaCep.Servicos.Implementacoes;
+﻿using Servicos.Servicos;
 using System;
 using System.Threading.Tasks;
 using Xunit;
