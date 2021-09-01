@@ -13,7 +13,7 @@ namespace Testes.Servicos
         [InlineData("12345 67")]
         [InlineData("")]
         [InlineData(null)]
-        public async Task ValidarCep_CepInvalido_Excecao(string cep)
+        public async Task ValidarCep_CepInvalido_ArgumentException(string cep)
         {
             // Arrange
             var obterCepServico = Servico;
