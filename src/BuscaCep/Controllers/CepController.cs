@@ -10,7 +10,7 @@ namespace BuscaCep.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CepController : ControllerBase
+    public class CepController : BaseController
     {
         private readonly IObterCepServico _obterCepServico;
 
