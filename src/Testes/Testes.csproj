@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuscaCep\BuscaCep.csproj" />
+    <ProjectReference Include="..\BuscaCep\Api.csproj" />
     <ProjectReference Include="..\Servicos\Servicos.csproj" />
   </ItemGroup>
 

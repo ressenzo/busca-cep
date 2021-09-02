@@ -9,7 +9,7 @@ namespace BuscaCep.Assemblies
         {
             return new Assembly[]
             {
-                Assembly.Load("BuscaCep"),
+                Assembly.Load("Api"),
                 Assembly.Load("Infraestrutura")
             };
         }
