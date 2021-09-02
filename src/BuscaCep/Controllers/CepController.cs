@@ -4,6 +4,8 @@ using Servicos.Contratos;
 using System;
 using System.Threading.Tasks;
 using System.Data;
+using Dominio.Entidades;
+using BuscaCep.Models;
 
 namespace BuscaCep.Controllers
 {
@@ -19,6 +21,10 @@ namespace BuscaCep.Controllers
         }
 
         [HttpGet("{cep}")]
+        [ProducesResponseType(typeof(Cep), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(RetornoErroModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ObterInformacoesCep(string cep)
         {
             try
