@@ -21,6 +21,7 @@ namespace Testes.Servicos
         [InlineData("1234567A")]
         [InlineData("123456789")]
         [InlineData("12345 67")]
+        [InlineData("1234567")]
         [InlineData("")]
         [InlineData(null)]
         public async Task ValidarCep_CepInvalido_ArgumentException(string cep)
@@ -40,20 +41,20 @@ namespace Testes.Servicos
         {
             // Arrange
             _cepRepositorio.Setup(x => x.ObterCep(It.IsAny<string>()))
-                .ReturnsAsync(new Cep() { Numero = "1234567" });
+                .ReturnsAsync(new Cep() { Numero = "12345678" });
             var obterCepServico = Servico;
 
             //Act
-            var cep = await obterCepServico.ObterCep("1234567");
+            var cep = await obterCepServico.ObterCep("12345678");
 
             // Assert
             Assert.NotNull(cep);
         }
 
         [Theory]
-        [InlineData("1234567", " ")]
-        [InlineData("1234567", "")]
-        [InlineData("1234567", null)]
+        [InlineData("12345678", " ")]
+        [InlineData("12345678", "")]
+        [InlineData("12345678", null)]
         public async Task ObterCep_CepNaoEncontrado_InvalidException(string cepAObter, string cepRetornado)
         {
             // Arrange

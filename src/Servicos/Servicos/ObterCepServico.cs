@@ -35,10 +35,10 @@ namespace Servicos.Servicos
             if (
                 string.IsNullOrWhiteSpace(cep) ||
                 cep.Any(x => !char.IsDigit(x)) ||
-                cep.Length >= 9
+                cep.Length != 8
             )
             {
-                throw new ArgumentException("CEP inválido. Deve conter apenas números, ter, no máximo, 8 caracteres e não pode ter espaço.");
+                throw new ArgumentException("CEP inválido. Deve conter apenas números, ter 8 caracteres e não pode ter espaço.");
             }
         }
     }
