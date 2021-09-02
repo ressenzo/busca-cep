@@ -1,4 +1,5 @@
-﻿using BuscaCep.Controllers;
+﻿using AutoMapper;
+using BuscaCep.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Servicos.Contratos;
@@ -11,10 +12,12 @@ namespace Testes.Controllers
     public class CepControllerTeste
     {
         private readonly Mock<IObterCepServico> _obterCepServico;
+        private readonly Mock<IMapper> _mapper;
 
         public CepControllerTeste()
         {
             _obterCepServico = new Mock<IObterCepServico>();
+            _mapper = new Mock<IMapper>();
         }
 
         [Fact]
@@ -66,7 +69,10 @@ namespace Testes.Controllers
         {
             get
             {
-                return new CepController(_obterCepServico.Object);
+                return new CepController(
+                    _obterCepServico.Object,
+                    _mapper.Object
+                    );
             }
         }
     }

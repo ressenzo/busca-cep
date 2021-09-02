@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Dominio.Entidades;
 using BuscaCep.Models;
+using AutoMapper;
 
 namespace BuscaCep.Controllers
 {
@@ -14,14 +15,19 @@ namespace BuscaCep.Controllers
     public class CepController : BaseController
     {
         private readonly IObterCepServico _obterCepServico;
+        private readonly IMapper _mapper;
 
-        public CepController(IObterCepServico obterCep)
+        public CepController(
+            IObterCepServico obterCep,
+            IMapper mapper
+            )
         {
             _obterCepServico = obterCep;
+            _mapper = mapper;
         }
 
         [HttpGet("{cep}")]
-        [ProducesResponseType(typeof(Cep), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(RetornoCepModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(RetornoErroModel), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -29,9 +35,9 @@ namespace BuscaCep.Controllers
         {
             try
             {
-                await _obterCepServico.ObterCep(cep);
+                var cepRetornado = await _obterCepServico.ObterCep(cep);
 
-                return Ok();
+                return Ok(_mapper.Map<Cep, RetornoCepModel>(cepRetornado));
             }
             catch (ArgumentException excecao)
             {

@@ -23,7 +23,7 @@ namespace BuscaCep
             services.AddControllers();
 
             services.AddAutoMapper(AssemblyUtil.Assemblies());
-            Mapeamento.Mapear(services);
+            IoC.Mapeamento.Mapear(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
