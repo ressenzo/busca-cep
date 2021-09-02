@@ -9,5 +9,10 @@ namespace BuscaCep.Controllers
         {
             return BadRequest(new RetornoErroModel(mensagem));
         }
+
+        protected ObjectResult StatusCode(int statusCode, string mensagem)
+        {
+            return StatusCode(statusCode, new RetornoErroModel(mensagem));
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace BuscaCep.Controllers
             }
             catch (Exception excecao)
             {
-                return StatusCode((int)StatusCodes.Status500InternalServerError, excecao.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, excecao.Message);
             }            
         }
     }
