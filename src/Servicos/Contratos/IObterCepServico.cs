@@ -5,6 +5,6 @@ namespace Servicos.Contratos
 {
     public interface IObterCepServico
     {
-        Task<Cep> ObterCep(string cep);
+        Task<Cep> ObterCep(string numeroCep);
     }
 }

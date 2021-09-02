@@ -9,7 +9,7 @@ namespace Infraestrutura.Mapeamentos
         public CepMapeamento()
         {
             CreateMap<CepResultado, Cep>()
-                .ForMember(dest => dest.Numero, map => map.MapFrom(x => x.Cep));
+                .ConstructUsing(src => new Cep(src.Cep));
         }
     }
 }
