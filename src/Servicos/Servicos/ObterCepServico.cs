@@ -23,8 +23,6 @@ namespace Servicos.Servicos
             var cepEncontrado = await _cepRepositorio.ObterCep(cep);
 
             return cepEncontrado;
-
-            throw new NotImplementedException();
         }
 
         private void ValidarCep(string cep)

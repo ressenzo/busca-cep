@@ -31,7 +31,7 @@ namespace BuscaCep.Controllers
             {
                 return BadRequest(excecao.Message);
             }
-            catch (InvalidOperationException excecao)
+            catch (InvalidOperationException)
             {
                 return NoContent();
             }

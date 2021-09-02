@@ -1,3 +1,4 @@
+using BuscaCep.Assemblies;
 using IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,7 @@ namespace BuscaCep
         {
             services.AddControllers();
 
+            services.AddAutoMapper(AssemblyUtil.Assemblies());
             Mapeamento.Mapear(services);
         }
 
