@@ -47,6 +47,21 @@ namespace Testes.Controllers
             Assert.IsType<ObjectResult>(resultado);
         }
 
+        [Fact]
+        public async Task NoContent()
+        {
+            // Arrange
+            var cepController = Controller;
+            _obterCepServico.Setup(x => x.ObterCep(It.IsAny<string>()))
+                .Throws(new InvalidOperationException());
+
+            // Act
+            var resultado = await cepController.ObterInformacoesCep(It.IsAny<string>());
+
+            // Assert
+            Assert.IsType<NoContentResult>(resultado);
+        }
+
         private CepController Controller
         {
             get

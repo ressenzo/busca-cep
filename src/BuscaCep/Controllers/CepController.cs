@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Servicos.Contratos;
 using System;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace BuscaCep.Controllers
 {
@@ -29,6 +30,10 @@ namespace BuscaCep.Controllers
             catch (ArgumentException excecao)
             {
                 return BadRequest(excecao.Message);
+            }
+            catch (InvalidOperationException excecao)
+            {
+                return NoContent();
             }
             catch (Exception excecao)
             {
