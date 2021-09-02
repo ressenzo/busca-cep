@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using Dominio.Repositorios;
 using Servicos.Contratos;
 using System;
 using System.Linq;
@@ -8,9 +9,20 @@ namespace Servicos.Servicos
 {
     public class ObterCepServico : IObterCepServico
     {
-        public Task<Cep> ObterCep(string cep)
+        private readonly ICepRepositorio _cepRepositorio;
+
+        public ObterCepServico(ICepRepositorio cepRepositorio)
+        {
+            _cepRepositorio = cepRepositorio;
+        }
+
+        public async Task<Cep> ObterCep(string cep)
         {
             ValidarCep(cep);
+
+            var cepEncontrado = await _cepRepositorio.ObterCep(cep);
+
+            return cepEncontrado;
 
             throw new NotImplementedException();
         }
