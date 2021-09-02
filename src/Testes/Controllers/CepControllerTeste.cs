@@ -26,7 +26,7 @@ namespace Testes.Controllers
             // Arrange
             var cepController = Controller;
             _obterCepServico.Setup(x => x.ObterCep(It.IsAny<string>()))
-                .Throws(new ArgumentException());
+                .Throws(new ArgumentException("Erro de requisição."));
 
             // Act
             var resultado = await cepController.ObterInformacoesCep(It.IsAny<string>());

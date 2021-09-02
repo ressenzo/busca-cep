@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Servicos.Contratos;
 using System;
 using System.Threading.Tasks;
-using System.Data;
 using Dominio.Entidades;
 using BuscaCep.Models;
 using AutoMapper;

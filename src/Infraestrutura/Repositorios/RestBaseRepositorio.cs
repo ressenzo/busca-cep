@@ -9,7 +9,7 @@ namespace Infraestrutura.Repositorios
     {
         private readonly string _url;
 
-        public RestBaseRepositorio(string urlBase)
+        protected RestBaseRepositorio(string urlBase)
         {
             _url = urlBase;
         }
