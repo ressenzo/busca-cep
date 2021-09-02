@@ -1,4 +1,6 @@
 ﻿using RestSharp;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Infraestrutura.Repositorios
@@ -16,6 +18,7 @@ namespace Infraestrutura.Repositorios
         {
             var cliente = new RestClient(_url);
             var requisicao = new RestRequest(recurso);
+            cliente.ThrowOnAnyError = true;
 
             var resposta = await cliente.GetAsync<T>(requisicao);
 

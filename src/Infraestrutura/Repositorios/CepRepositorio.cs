@@ -2,6 +2,7 @@
 using Dominio.Entidades;
 using Dominio.Repositorios;
 using Infraestrutura.Resultados;
+using System;
 using System.Threading.Tasks;
 
 namespace Infraestrutura.Repositorios
@@ -18,9 +19,16 @@ namespace Infraestrutura.Repositorios
 
         public async Task<Cep> ObterCep(string cep)
         {
-            var resultado = await GetAsync<CepResultado>($"ws/{cep}/json/");
+            try
+            {
+                var resultado = await GetAsync<CepResultado>($"ws/{cep}/json/");
 
-            return _mapper.Map<CepResultado, Cep>(resultado);
+                return _mapper.Map<CepResultado, Cep>(resultado);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

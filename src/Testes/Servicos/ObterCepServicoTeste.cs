@@ -40,7 +40,7 @@ namespace Testes.Servicos
         {
             // Arrange
             _cepRepositorio.Setup(x => x.ObterCep(It.IsAny<string>()))
-                .ReturnsAsync(new Cep());
+                .ReturnsAsync(new Cep() { Numero = "1234567" });
             var obterCepServico = Servico;
 
             //Act
@@ -48,6 +48,24 @@ namespace Testes.Servicos
 
             // Assert
             Assert.NotNull(cep);
+        }
+
+        [Theory]
+        [InlineData("1234567", " ")]
+        [InlineData("1234567", "")]
+        [InlineData("1234567", null)]
+        public async Task ObterCep_CepNaoEncontrado_InvalidException(string cepAObter, string cepRetornado)
+        {
+            // Arrange
+            var obterCepServico = Servico;
+            _cepRepositorio.Setup(x => x.ObterCep(It.IsAny<string>()))
+                .ReturnsAsync(new Cep() { Numero = cepRetornado });
+
+            // Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                // Act
+                async () => await obterCepServico.ObterCep(cepAObter)
+            );
         }
 
         private ObterCepServico Servico

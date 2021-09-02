@@ -22,6 +22,11 @@ namespace Servicos.Servicos
 
             var cepEncontrado = await _cepRepositorio.ObterCep(cep);
 
+            if (string.IsNullOrWhiteSpace(cepEncontrado.Numero))
+            {
+                throw new InvalidOperationException();
+            }
+
             return cepEncontrado;
         }
 
