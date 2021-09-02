@@ -25,9 +25,9 @@ namespace Infraestrutura.Repositorios
 
                 return _mapper.Map<CepResultado, Cep>(resultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new ArgumentException(ex.Message);
             }
         }
     }
