@@ -24,6 +24,23 @@ namespace BuscaCep
 
             services.AddAutoMapper(AssemblyUtil.Assemblies());
             IoC.Mapeamento.Mapear(services);
+
+            ConfigurarSwagger(services);
+        }
+
+        private void ConfigurarSwagger(IServiceCollection services)
+        {
+            var informacoes = new Microsoft.OpenApi.Models.OpenApiInfo
+            {
+                Title = "CEP API",
+                Version = "v1",
+                Description = "API para obter informações de CEP"                
+            };
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", informacoes);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +60,18 @@ namespace BuscaCep
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            UsarSwagger(app);
+        }
+
+        private void UsarSwagger(IApplicationBuilder app)
+        {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API CEP");
             });
         }
     }
