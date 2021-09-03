@@ -1,12 +1,11 @@
-using BuscaCep.Assemblies;
-using IoC;
+using Api.Assemblies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace BuscaCep
+namespace Api
 {
     public class Startup
     {
@@ -34,7 +33,7 @@ namespace BuscaCep
             {
                 Title = "CEP API",
                 Version = "v1",
-                Description = "API para obter informações de CEP"                
+                Description = "API para obter informações de CEP"
             };
 
             services.AddSwaggerGen(c =>

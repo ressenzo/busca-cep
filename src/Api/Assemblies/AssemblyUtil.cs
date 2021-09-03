@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 
-namespace BuscaCep.Assemblies
+namespace Api.Assemblies
 {
     public static class AssemblyUtil
     {

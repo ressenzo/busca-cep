@@ -4,10 +4,10 @@ using Servicos.Contratos;
 using System;
 using System.Threading.Tasks;
 using Dominio.Entidades;
-using BuscaCep.Models;
+using Api.Models;
 using AutoMapper;
 
-namespace BuscaCep.Controllers
+namespace Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -58,7 +58,7 @@ namespace BuscaCep.Controllers
             catch (Exception excecao)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, excecao.Message);
-            }            
+            }
         }
     }
 }

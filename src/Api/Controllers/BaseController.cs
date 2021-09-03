@@ -1,7 +1,7 @@
-﻿using BuscaCep.Models;
+﻿using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BuscaCep.Controllers
+namespace Api.Controllers
 {
     public abstract class BaseController : ControllerBase
     {

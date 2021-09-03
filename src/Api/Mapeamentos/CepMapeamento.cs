@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using BuscaCep.Models;
+using Api.Models;
 using Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace BuscaCep.Mapeamento
+namespace Api.Mapeamento
 {
     public class CepMapeamento : Profile
     {

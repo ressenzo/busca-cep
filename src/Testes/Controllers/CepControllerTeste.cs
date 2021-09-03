@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BuscaCep.Controllers;
+using Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Servicos.Contratos;
